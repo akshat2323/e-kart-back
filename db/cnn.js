@@ -7,7 +7,7 @@ const DB ="mongodb+srv://akt:akshat@cluster0.sfhry.mongodb.net/E-kart?retryWrite
 const cnn = mongoose.connect(DB).then(()=>{
     console.log('connection successful');
 }).catch((err)=>{
-    console.log('err');
+    console.log(err);
 });
 
 

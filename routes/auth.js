@@ -6,6 +6,11 @@ const jwt = require('jsonwebtoken');
 const authentication = require('../middleware/authentication');
 require('../db/cnn');
 
+
+router.get('/home', (req,res) =>{
+    console.log("home page");
+    return res.status(200).json({ body: "welcome to home" });
+});
 router.post('/signup', (req, res) => {
     const { name, phone, address, dob, email, password, cpassword } = req.body;
 
@@ -23,7 +28,7 @@ router.post('/signup', (req, res) => {
                 
                 user.save().then(() => {
                     res.status(201).json({ msg: "user registered successfully" });
-                }).catch((err) => { res.status(500).json({ error: "couldnt register" }) } );
+                }).catch((err) => { res.status(422).json({ error: "couldnt register" }) } );
             }
         }
 
@@ -50,13 +55,13 @@ router.post('/login', async (req, res) => {
         });
 
         if(!match){
-            return res.status(400).json({ error: "Entered Something Wrong" });
+            return res.status(422).json({ error: "Entered Something Wrong" });
         }else{
             return res.status(201).json({msg:"Logged In"});
         }
 
     } catch (error) {
-        res.json({ error: error });
+        res.status(422).json({ error: error });
     }
 
 
