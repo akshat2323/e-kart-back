@@ -73,6 +73,21 @@ router.get('/home', authentication, (req,res)=>{
   res.status(201);
 });
 
+router.get('/about', authentication, (req,res)=>{
+    console.log('Hellow from about page');
+    res.status(201);
+  });
+
+  router.get('/profile', authentication, (req,res)=>{
+    console.log('Hellow from about page');
+    res.status(201);
+  });
+
+  router.get('/subs', authentication, (req,res)=>{
+    console.log('Hellow from about page');
+    res.status(201);
+  });
+
 router.get('/lgout', (req,res)=>{
     res.clearCookie('ekartoken', {path: '/'});
     res.status(200).send("user logged out");
